@@ -3,7 +3,7 @@ void dummy_test_entrypoint() {
 }
 
 char* vmem = (char*)0xb8000;
-
+const char color = 0x0f;
 
 void print(char* instr);
 void backspace();
@@ -17,6 +17,8 @@ void print(char* instr) {
     char* str = instr;
     while (*str != 0x0) {
         *vmem = *str;
+        vmem++;
+        *vmem = color;
         vmem++;
     }
 }
