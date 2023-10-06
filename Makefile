@@ -11,7 +11,7 @@ CFLAGS = -g
 
 # First rule is run by default
 os.bin: os-image.bin padding.bin
-	cat padding.bin os-image.bin > os.bin
+	cat os-image.bin padding.bin > os.bin
 
 padding.bin: boot/padding.asm
 	nasm -fbin boot/padding.asm -o padding.bin
