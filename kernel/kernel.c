@@ -9,7 +9,7 @@ void print(char* instr);
 void backspace();
 
 void main() {
-    char* banana = "I love bananas";
+    char* banana = "I love bananas\0";
     print(banana);
 }
 
