@@ -2,7 +2,26 @@
 void dummy_test_entrypoint() {
 }
 
+char* vmem = (char*)0xb8000;
+
+
+void print(char* instr);
+void backspace();
+
 void main() {
-    char* video_memory = (char*) 0xb8000;
-    *video_memory = 'X';
+    char* banana = "I love bananas";
+    print(banana);
+}
+
+void print(char* instr) {
+    char* str = instr;
+    while (*str != 0x0) {
+        *vmem = *str;
+        vmem++;
+    }
+}
+
+void backspace() {
+    vmem--;
+    vmem = 0x0;
 }
