@@ -10,6 +10,12 @@ GDB = /usr/local/i386elfgcc/bin/i386-elf-gdb
 CFLAGS = -g
 
 # First rule is run by default
+os.bin: os-image.bin padding.bin
+	cat padding.bin os-image.bin > os.bin
+
+padding.bin: boot/padding.asm
+	nasm -fbin boot/padding.asm -o padding.bin
+
 os-image.bin: boot/bootsect.bin kernel.bin
 	cat $^ > os-image.bin
 
